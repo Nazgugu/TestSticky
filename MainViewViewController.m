@@ -221,7 +221,14 @@
     {
 //        NSLog(@"table 1");
         NSLog(@"table1 content height: %lf, table2 content heigh: %lf",self.table1ContentHeight, self.table2ContentHeight);
-        
+        ////
+        ///
+        ////
+        //need to add condition to check before setting new frame!!!
+        ///
+        ////
+        ///
+        ///
         self.originContentOffsetTable1 = scrollView.contentOffset.y;
         CGFloat ratio = 1;
         if (self.table1Ratio != 0)
@@ -248,6 +255,14 @@
         {
             ratio = (CGFloat)self.table2Ratio;
         }
+        ////
+        ///
+        ////
+        //need to add condition to check before setting new frame!!!
+        ///
+        ////
+        ///
+        ///
         self.originContentOffsetTable2 = scrollView.contentOffset.y;
         if (scrollView.contentOffset.y > 0.0f && ((self.originHeaderHeight - scrollView.contentOffset.y * ratio) >= 64.0f))
         {
