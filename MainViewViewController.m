@@ -235,16 +235,19 @@
         {
             ratio = (CGFloat)self.table1Ratio;
         }
-        if (scrollView.contentOffset.y > 0.0f && ((self.originHeaderHeight - scrollView.contentOffset.y * ratio) >= 64.0f))
+        if (scrollView.contentOffset.y != self.originContentOffsetTable2)
         {
-            
-            NSLog(@"original height: %lf, table 1 offset y: %lf, difference: %lf",self.originHeaderHeight ,scrollView.contentOffset.y, self.originHeaderHeight - scrollView.contentOffset.y);
-            self.mainScrollViewHeight.constant = self.originMainHeight + scrollView.contentOffset.y * ratio;
-            self.tableViewScrollViewHeightConstant.constant = self.originTableHeight + scrollView.contentOffset.y * ratio;
-            [self.table1 setFrame:CGRectMake(0.0f, 0.0f, self.table1OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
-            [self.table2 setFrame:CGRectMake(SCREEN_WIDTH, 0.0f, self.table2OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
-            
-            [self.table2 setContentOffset:CGPointMake(0.0f, self.originContentOffsetTable2)];
+            if (scrollView.contentOffset.y > 0.0f && ((self.originHeaderHeight - scrollView.contentOffset.y * ratio) >= 64.0f))
+            {
+                
+                NSLog(@"original height: %lf, table 1 offset y: %lf, difference: %lf",self.originHeaderHeight ,scrollView.contentOffset.y, self.originHeaderHeight - scrollView.contentOffset.y);
+                self.mainScrollViewHeight.constant = self.originMainHeight + scrollView.contentOffset.y * ratio;
+                self.tableViewScrollViewHeightConstant.constant = self.originTableHeight + scrollView.contentOffset.y * ratio;
+                [self.table1 setFrame:CGRectMake(0.0f, 0.0f, self.table1OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
+                [self.table2 setFrame:CGRectMake(SCREEN_WIDTH, 0.0f, self.table2OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
+                
+                //            [self.table2 setContentOffset:CGPointMake(0.0f, self.originContentOffsetTable2)];
+            }
         }
     }
     else if (scrollView.tag == 4)
@@ -264,14 +267,17 @@
         ///
         ///
         self.originContentOffsetTable2 = scrollView.contentOffset.y;
-        if (scrollView.contentOffset.y > 0.0f && ((self.originHeaderHeight - scrollView.contentOffset.y * ratio) >= 64.0f))
+        if (scrollView.contentOffset.y != self.originContentOffsetTable1)
         {
-            self.mainScrollViewHeight.constant = self.originMainHeight + scrollView.contentOffset.y * ratio;
-            self.tableViewScrollViewHeightConstant.constant = self.originTableHeight + scrollView.contentOffset.y * ratio;
-            [self.table1 setFrame:CGRectMake(0.0f, 0.0f, self.table1OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
-            [self.table2 setFrame:CGRectMake(SCREEN_WIDTH, 0.0f, self.table2OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
-            [self.table1 setContentOffset:CGPointMake(0.0f, self.originContentOffsetTable1)];
-            NSLog(@"table 2 offset y: %lf",scrollView.contentOffset.y * ratio);
+            if (scrollView.contentOffset.y > 0.0f && ((self.originHeaderHeight - scrollView.contentOffset.y * ratio) >= 64.0f))
+            {
+                self.mainScrollViewHeight.constant = self.originMainHeight + scrollView.contentOffset.y * ratio;
+                self.tableViewScrollViewHeightConstant.constant = self.originTableHeight + scrollView.contentOffset.y * ratio;
+                [self.table1 setFrame:CGRectMake(0.0f, 0.0f, self.table1OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
+                [self.table2 setFrame:CGRectMake(SCREEN_WIDTH, 0.0f, self.table2OriginRect.size.width, self.table1OriginRect.size.height + scrollView.contentOffset.y * ratio)];
+                //            [self.table1 setContentOffset:CGPointMake(0.0f, self.originContentOffsetTable1)];
+                //            NSLog(@"table 2 offset y: %lf",scrollView.contentOffset.y * ratio);
+            }
         }
     }
 }
