@@ -209,7 +209,7 @@
         NSLog(@"ration will be two");
         self.table1Ratio = 2;
     }
-    if ((self.originHeaderHeight - 64.0f) >= (self.table2ContentHeight - self.tableViewScrollViewHeightConstant.constant + 50.0f))
+    if ((self.originHeaderHeight - (self.table1ContentHeight - self.tableViewScrollViewHeightConstant.constant) / 2.0f) >= 64.0f)
     {
         self.table2Ratio = 2;
     }
